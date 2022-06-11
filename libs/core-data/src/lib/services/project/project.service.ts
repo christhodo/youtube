@@ -3,6 +3,8 @@ import { Project } from '@project-angular/api-interfaces';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'apps/dashboard/src/environments/environment';
 import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { apiKey } from 'apps/dashboard/apiKey';
 
 @Injectable({
   providedIn: 'root',
@@ -12,6 +14,21 @@ export class ProjectsService {
   private imageUrl = `https://robohash.org/`;
 
   constructor(private http: HttpClient) {}
+
+  getVideosForChanel(channel, maxResults): Observable<Object> {
+    let url =
+      'https://www.googleapis.com/youtube/v3/search?key=' +
+      apiKey +
+      '&channelId=' +
+      channel +
+      '&order=date&part=snippet &type=video,id&maxResults=' +
+      maxResults;
+    return this.http.get(url).pipe(
+      map((res) => {
+        return res;
+      })
+    );
+  }
 
   all() {
     return this.http.get<Project[]>(this.getUrl()).pipe(

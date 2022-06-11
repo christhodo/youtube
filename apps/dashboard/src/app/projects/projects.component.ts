@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthGuardService } from '@project-angular/core-data';
+import { AuthGuardService, ProjectsService } from '@project-angular/core-data';
 import { Project } from '@project-angular/api-interfaces';
 import { ProjectsFacade } from '@project-angular/core-state';
 import { Observable } from 'rxjs';
@@ -12,8 +12,12 @@ import { Observable } from 'rxjs';
 export class ProjectsComponent {
   allProjects$: Observable<Project[]> = this.projectsFacade.allProjects$;
   selectedProject$: Observable<Project> = this.projectsFacade.selectedProjects$;
+  videos: any[];
 
-  constructor(private projectsFacade: ProjectsFacade) {}
+  constructor(
+    private projectsFacade: ProjectsFacade,
+    private projectsService: ProjectsService
+  ) {}
 
   ngOnInit(): void {
     this.reset();
