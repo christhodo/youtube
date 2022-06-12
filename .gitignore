@@ -33,8 +33,9 @@ npm-debug.log
 yarn-error.log
 testem.log
 /typings
+apiKey.ts
 
 # System Files
 .DS_Store
 Thumbs.db
- apiKey.ts
+ 

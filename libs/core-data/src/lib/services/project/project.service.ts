@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'apps/dashboard/src/environments/environment';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { apiKey } from 'apps/dashboard/apiKey';
+import { apiKey } from 'apps/dashboard/key/apiKey';
 
 @Injectable({
   providedIn: 'root',
