@@ -1,0 +1,54 @@
+<mat-card>
+  <mat-card-title>
+    <span *ngIf="currentProject.id; else elseBlock">
+      Editing {{ originalTitle }}
+    </span>
+    <ng-template #elseBlock>
+      Select User
+    </ng-template>
+  </mat-card-title>
+  <form #form="ngForm" (submit)="saved.emit(currentProject)">
+    <mat-card-content>
+      <mat-form-field class="full-width">
+        <input
+          matInput
+          placeholder="Name"
+          [(ngModel)]="currentProject.name"
+          type="text"
+          name="name"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input
+          matInput
+          placeholder="Phone"
+          [(ngModel)]="currentProject.phone"
+          type="text"
+          name="phone"
+          required
+        />
+      </mat-form-field>
+      <img
+        mat-card-sm-image
+        [src]="currentProject.defaultImageUrl"
+        height="50"
+        width="50"
+        class="avatar"
+      />
+    </mat-card-content>
+    <mat-card-actions>
+      <button
+        [disabled]="form.invalid"
+        type="submit"
+        mat-button
+        color="primary"
+      >
+        Save
+      </button>
+      <button type="button" mat-button (click)="form.reset(); cancelled.emit()">
+        Cancel
+      </button>
+    </mat-card-actions>
+  </form>
+</mat-card>

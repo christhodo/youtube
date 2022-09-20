@@ -1,0 +1,26 @@
+<mat-card>
+  <mat-card-title>
+    Directory
+  </mat-card-title>
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item
+        *ngFor="let project of projects"
+        class="mat-list-option"
+        (click)="selected.emit(project)"
+      >
+        <span matLine>{{ project.name }}</span>
+        <button
+          *ngIf="!readonly"
+          attr.data-cy="delete-project-{{ project.id }}-btn"
+          mat-icon-button
+          type="button"
+          color="warn"
+          (click)="deleted.emit(project); $event.stopImmediatePropagation()"
+        >
+          <mat-icon>clear</mat-icon>
+        </button>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>

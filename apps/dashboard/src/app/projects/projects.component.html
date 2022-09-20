@@ -1,0 +1,18 @@
+<div class="component-container">
+  <div class="list-component">
+    <project-angular-projects-list
+      [projects]="allProjects$ | async"
+      (selected)="selectProject($event)"
+      (deleted)="deleteProject($event)"
+    >
+    </project-angular-projects-list>
+  </div>
+  <div class="details-component">
+    <project-angular-project-details
+      [project]="selectedProject$ | async"
+      (saved)="saveProject($event)"
+      (cancelled)="resetForm()"
+    >
+    </project-angular-project-details>
+  </div>
+</div>
